@@ -15,7 +15,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     }
     if (link=="https://www.youtube.com/"){
         var date = new Date();
-        var oldtime = date.getTime();
+        oldtime = date.getTime();
+        oldtime = oldtime/1000;
         var myVar = setInterval(myTimer, 1000);
         document.getElementById("content").innerHTML = myVar;
         var timespent = myVar - oldtime;
@@ -27,9 +28,12 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
 function myTimer() {
     var date = new Date();
-    var newtime = date.getTime();
+    newtime = date.getTime();
     newtime = newtime/1000;
     document.getElementById("test3").innerHTML = newtime;
+    realtime = newtime-oldtime;
+    document.getElementById("test2").innerHTML = realtime;
     return newtime
-
+    
     }
+
