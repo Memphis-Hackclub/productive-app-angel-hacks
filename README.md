@@ -1,4 +1,8 @@
 # productive-app-angel-hacks
+Build In | Contributors | Live version
+--- | --- | ---
+**HTML/CSS/JS** | [@philip-hub](https://github.com/philip-hub) [@MaybeDuck](https://github.com/MaybeDuck) [@efwitmer](https://github.com/efwitmer) [@TheHuman01](https://github.com/TheHuman01)| Not Out Yet...
+
 
 Our hackclub's 2021 team project for Angel Hacks. It's a productivity app for users to manage thier time on the internet.
 
