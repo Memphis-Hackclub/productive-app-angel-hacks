@@ -1,3 +1,9 @@
+sites = localStorage.getItem("sites");
+timeOfSites = localStorage.getItem("timeofSite");
+document.getElementById("test").innerHTML = sites;
+document.getElementById("test2").innerHTML = timeOfSites;
+
+
 window.onload = function() {
 
     var chart = new CanvasJS.Chart("chartContainer", {

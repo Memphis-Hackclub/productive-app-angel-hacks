@@ -71,16 +71,22 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         } 
     
     siteandTime = [];
-
+    
+    timeForChart = [];
+    
     for(var i = 0; i < sites.length; i++){
         webname = sites[i]
         time = (Math.round(timeOfSites.getItem(String(sites[i]))/60))
+        timeForChart.push(time)
         pair = String((sites[i]+": "+ time))
         siteandTime.push(pair)
     }
 
     document.getElementById("submit").innerHTML = siteandTime.join("<br>");
-    timeOfSites
+    
+    
+    localStorage.setItem("timeofSite", timeForChart);
+    localStorage.setItem("sites", sites);
 
     siteandTime = [];
 
