@@ -1,18 +1,80 @@
-/*let website0 = document.getElementById('website'); 
-localStorage.website0 = website0;
-document.getElementById("test3").innerHTML = localStorage.website0;*/
+storage = window.localStorage;
+sites = [];
+fistrun = true;
+timeOfSites = window.localStorage;
+oldTimeHolder = window.localStorage;
+siteStorgaeTime = window.localStorage;
+oldTime()
 
+function oldTime(){
+   if(fistrun == true && oldTimeHolder.length != 0){
+    oldtime = parseInt(oldTimeHolder.getItem("oldtime"))
+    oldtime = oldtime/1000;
+    var myVar = setTimeout(myTimer, 1000);
+    timespent = myVar - oldtime;
+    fistrun = false;
+   }
+   else{
+    var date = new Date();
+    oldtime2 = date.getTime();
+    oldTimeHolder.setItem("oldtime",String(oldtime2));
+    oldtime = parseInt(oldTimeHolder.getItem("oldtime"))
+    oldtime = oldtime/1000;
+    var myVar = setTimeout(myTimer, 1000);
+    timespent = myVar - oldtime;
+   }  
+}
+function myTimer() {
+    var date = new Date();
+    newtime = date.getTime();
+    newtime = newtime/1000;
+    realtime = newtime-oldtime;
+    main();
+    return newtime  
+    }
+function include(arr, obj) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] == obj) return true;
+    }
+  }
+function url_domain(data) {
+    var    a      = document.createElement('a');
+           a.href = data;
+    return a.hostname;
+  }
+function main(){
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-    let Adreess = tabs[0].url;
-    
-    var link = String(tabs[0].url);
-    var homePage = '<h1>Add Website Monitors</h1><form>How goal crushing is this website?<input type="link" id="website"></input><select id="type" name="type"><option value="1">I will be fine</option><option value="2">Prabably an issue</option><option value="3">I will die looking at this website</option></select><br></form>';
-    document.getElementById("test").innerHTML = link;
-    if(link=="https://www.amazon.com/"){
-        document.getElementById("content").innerHTML = '<h1>Add Website Monitors</h1><form>How goal crushing is this website?<input type="link" id="website"></input><select id="type" name="type"><option value="1">I will be fine</option><option value="2">Prabably an issue</option><option value="3">I will die looking at this website</option></select><br></form>';
+    let Adreess = String(url_domain(tabs[0].url));
+    storage.setItem(String(storage.length),Adreess);
+    for(var i = 0; i < storage.length; i++){
+            var website = storage.getItem(String(i));
+            if(!include(sites, website)){
+                if(website != null){
+                sites.push(website)
+                
+        }
     }
-    if (link=="https://www.youtube.com/"){
-        document.getElementById("content").innerHTML = link;
+}
+    for(var i = 0; i < sites.length; i++){
+        if(timeOfSites.getItem(Adreess) != undefined && timeOfSites.getItem(Adreess) != "NaN"){
+            noldtimer = parseInt(timeOfSites.getItem(String(sites[i])))
+            timeOfSites.setItem(String(sites[i]),String(noldtimer+realtime))   
+        }
+        else{
+            timeOfSites.setItem(String(Adreess),"0");
+        } 
     }
-
+    siteandTime = [];
+    for(var i = 0; i < sites.length; i++){
+        webname = sites[i]
+        time = (Math.round(timeOfSites.getItem(String(sites[i]))))
+        pair = String((sites[i]+": "+ time))
+        siteandTime.push(pair)
+    }
+    document.getElementById("submit").innerHTML = siteandTime.join("<br>");
+    siteandTime = [];
+    oldTime();
 });
+
+
+}
