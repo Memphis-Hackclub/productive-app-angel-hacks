@@ -1,12 +1,25 @@
 
 
+
 storage = window.localStorage;
 sites = [];
+specialSites = ["www.youtube.com"]
+
 fistrun = true;
 timeOfSites = window.localStorage;
 oldTimeHolder = window.localStorage;
-siteStorgaeTime = window.localStorage;
 
+
+date = new Date();
+hour = date.getHours()
+
+if(hour == 24){
+    storage.clear()
+    timeOfSites.clear()
+    sites = [];
+    firstrun = True;
+
+}
 
 
 
@@ -53,8 +66,32 @@ function url_domain(data) {
     return a.hostname;
   }
 
+
+
     
+
+  
 function main(){
+    WebsiteArray = [];
+    web1 = localStorage.getItem('website1')
+    web2 = localStorage.getItem('website2')
+    web3 = localStorage.getItem('website3')
+    WebsiteArray.push(web1)
+    WebsiteArray.push(web2)
+    WebsiteArray.push(web3)
+    
+    timeArray = [];
+    time1 = localStorage.getItem('time4')
+    time2 = localStorage.getItem('time2')
+    time3 = localStorage.getItem('time3')
+    timeArray.push(time1)
+    timeArray.push(time2)
+    timeArray.push(time3)
+
+    
+
+
+
 
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
@@ -76,7 +113,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 }
     
         if(timeOfSites.getItem(Adreess) != undefined && timeOfSites.getItem(Adreess) != "NaN"){
-           
+            
             noldtimer = parseInt(timeOfSites.getItem(String(Adreess)))
             timeOfSites.setItem(String(Adreess),String(noldtimer+realtime))   
         }
@@ -88,13 +125,20 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     specialSites = ["www.youtube.com"]
     
     for(var i = 0; i <= specialSites.length; i++){
-        
-        amount = parseInt(timeOfSites.getItem(String(specialSites[i])))
-        
-        if(amount > 1 && include(specialSites, Adreess)){
-            alert('hello')
+        amount = parseInt(timeOfSites.getItem(String(specialSites[i])))/100
+        if(amount > 45 && include(specialSites, Adreess)){
+            alert("(|__/) || GET OUT OF THE RABBIT HOLE"+"\n"+"(•ㅅ•) ||WHILE YOU STILL YOU CAN")
         }
     }
+    for(var i = 0; i < WebsiteArray.length; i++){
+        amount = parseInt(timeOfSites.getItem(String(WebsiteArray[i])))/100
+        time = parseInt(timeArray[i])
+        
+        if(amount > howlongyogot && include(WebsiteArray, Adreess)){
+            alert("(|__/) || THE RABBIT EXTERMINATOR"+"\n"+"(•ㅅ•) ||EVERYONE GET OUT!")
+        }
+    }
+
     
     oldTime();
 });
