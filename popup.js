@@ -80,7 +80,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     }
 
     document.getElementById("submit").innerHTML = siteandTime.join("<br>");
-   
+    timeOfSites
+
     siteandTime = [];
 
     oldTime();
