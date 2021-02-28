@@ -1,3 +1,5 @@
+
+
 storage = window.localStorage;
 sites = [];
 fistrun = true;
@@ -52,18 +54,20 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 if(website != null){
                 sites.push(website)
                 
+
         }
     }
 }
-    for(var i = 0; i < sites.length; i++){
+    
         if(timeOfSites.getItem(Adreess) != undefined && timeOfSites.getItem(Adreess) != "NaN"){
-            noldtimer = parseInt(timeOfSites.getItem(String(sites[i])))
-            timeOfSites.setItem(String(sites[i]),String(noldtimer+realtime))   
+            
+            noldtimer = parseInt(timeOfSites.getItem(String(Adreess)))
+            timeOfSites.setItem(String(Adreess),String(noldtimer+1))   
         }
         else{
             timeOfSites.setItem(String(Adreess),"0");
         } 
-    }
+    
     siteandTime = [];
     for(var i = 0; i < sites.length; i++){
         webname = sites[i]
