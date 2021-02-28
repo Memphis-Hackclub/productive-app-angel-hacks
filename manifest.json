@@ -1,5 +1,5 @@
 {
-  "name": "FakechromeExtensions",
+  "name": "The Rabbit Detector",
   "version":"1.0", 
   "manifest_version": 2,
   "background": {
@@ -7,6 +7,7 @@
     "persistent": true
   },
   "browser_action":{
+    "default_icon": "carrot.png",
     "default_popup": "popup.html",
     "defult_title": "Popup"
   },
