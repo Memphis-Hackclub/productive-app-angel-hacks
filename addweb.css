@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ballet&display=swap');
+
+html, body {
+  min-width: 600px;
+  min-height: 800px; /* your desired width */
+  max-width: 100%;
+  
+  
+  border-radius: 5%;
+  
+	text-align: center;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px darkblue;
+  font-family: 'Righteous', cursive;
+}
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+a {
+  font-size: 25px;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 15;
+
+  text-align: center;
+  line-height: 59px;
+  padding: 0 64px;
+  margin: 0;
+  padding-top: 40px;
+	
+	color: #f2c94c;
+  text-shadow: 1px 1px 1px darkblue;
+
+  display: inline-block;
+}
+
+#premium{
+  font-family: 'Ballet', cursive;
+  font-size: 2em;
+  text-shadow: 6px 4px 4px black;
+}
+
+input, button{
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px darkblue;
+  border-radius: 10%;
+  font-size: 2em;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+
+	
+	
+}
