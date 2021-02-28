@@ -1,19 +1,19 @@
 
 
-
+//https://rabbitholehtml.philippounds.repl.co
 storage = window.localStorage;
 sites = [];
-specialSites = ["www.youtube.com"]
+specialSites = ["www.youtube.com", "www.tiktok.com", "twitter.com"]
 
 fistrun = true;
 timeOfSites = window.localStorage;
 oldTimeHolder = window.localStorage;
-
-
+rabbitholetime = 1; 
 date = new Date();
 hour = date.getHours()
 
 if(hour == 24){
+    rabbitholetime = 45; 
     storage.clear()
     timeOfSites.clear()
     sites = [];
@@ -126,15 +126,17 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     
     for(var i = 0; i <= specialSites.length; i++){
         amount = parseInt(timeOfSites.getItem(String(specialSites[i])))/100
-        if(amount > 45 && include(specialSites, Adreess)){
+        if(amount >= rabbitholetime && include(specialSites, Adreess)){
             alert("(|__/) || GET OUT OF THE RABBIT HOLE"+"\n"+"(•ㅅ•) ||WHILE YOU STILL YOU CAN")
+            rabbitholetime = rabbitholetime * 2
+            
         }
     }
     for(var i = 0; i < WebsiteArray.length; i++){
         amount = parseInt(timeOfSites.getItem(String(WebsiteArray[i])))/100
         time = parseInt(timeArray[i])
-        
-        if(amount > howlongyogot && include(WebsiteArray, Adreess)){
+        alert(howlongyogot)
+        if(amount >= howlongyogot && include(WebsiteArray, Adreess)){
             alert("(|__/) || THE RABBIT EXTERMINATOR"+"\n"+"(•ㅅ•) ||EVERYONE GET OUT!")
         }
     }
