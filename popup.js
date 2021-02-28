@@ -1,70 +1,81 @@
-/*let website0 = document.getElementById('website'); 
-localStorage.website0 = website0;
-document.getElementById("test3").innerHTML = localStorage.website0;*/
 
-excute = document.getElementById("excute");
-excute.addEventListener('click', getData);
+storage = window.localStorage;
+sites = [];
+fistrun = true;
+timeOfSites = window.localStorage;
+oldTimeHolder = window.localStorage;
+siteStorgaeTime = window.localStorage;
+oldTime()
 
-chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-    let Adreess = tabs[0].url;
-    
-    var link = String(tabs[0].url);
-    var homePage = '<h1>Add Website Monitors</h1><form>How goal crushing is this website?<input type="link" id="website"></input><select id="type" name="type"><option value="1">I will be fine</option><option value="2">Prabably an issue</option><option value="3">I will die looking at this website</option></select><br></form>';
-    document.getElementById("test").innerHTML = link;
-    if(link=="https://www.amazon.com/"){
-        document.getElementById("content").innerHTML = '<h1>Add Website Monitors</h1><form>How goal crushing is this website?<input type="link" id="website"></input><select id="type" name="type"><option value="1">I will be fine</option><option value="2">Prabably an issue</option><option value="3">I will die looking at this website</option></select><br></form>';
-    }
-    if (link=="https://www.youtube.com/"){
-        var date = new Date();
-        oldtime = date.getTime();
-        oldtime = oldtime/1000;
-        var myVar = setInterval(myTimer, 1000);
-        document.getElementById("content").innerHTML = myVar;
-        var timespent = myVar - oldtime;
-        document.getElementById("test").innerHTML = timespent;
-    }
-
-});
-
-
+function oldTime(){
+   if(fistrun == true && oldTimeHolder.length != 0){
+    oldtime = parseInt(oldTimeHolder.getItem("oldtime"))
+    oldtime = oldtime/1000;
+    var myVar = setTimeout(myTimer, 1000);
+    timespent = myVar - oldtime;
+    fistrun = false;
+   }
+   else{
+    var date = new Date();
+    oldtime2 = date.getTime();
+    oldTimeHolder.setItem("oldtime",String(oldtime2));
+    oldtime = parseInt(oldTimeHolder.getItem("oldtime"))
+    oldtime = oldtime/1000;
+    var myVar = setTimeout(myTimer, 1000);
+    timespent = myVar - oldtime;
+   }  
+}
 function myTimer() {
     var date = new Date();
     newtime = date.getTime();
     newtime = newtime/1000;
     realtime = newtime-oldtime;
-    document.getElementById("test2").innerHTML = "You have been here for " + realtime;
-    return newtime
-    
+    main();
+    return newtime  
     }
+function include(arr, obj) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] == obj) return true;
+    }
+  }
+function url_domain(data) {
+    var    a      = document.createElement('a');
+           a.href = data;
+    return a.hostname;
+  }
+function main(){
+chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    let Adreess = String(url_domain(tabs[0].url));
+    storage.setItem(String(storage.length),Adreess);
+    for(var i = 0; i < storage.length; i++){
+            var website = storage.getItem(String(i));
+            if(!include(sites, website)){
+                if(website != null){
+                sites.push(website)
+                
+        }
+    }
+}
+    for(var i = 0; i < sites.length; i++){
+        if(timeOfSites.getItem(Adreess) != undefined && timeOfSites.getItem(Adreess) != "NaN"){
+            noldtimer = parseInt(timeOfSites.getItem(String(sites[i])))
+            timeOfSites.setItem(String(sites[i]),String(noldtimer+realtime))   
+        }
+        else{
+            timeOfSites.setItem(String(Adreess),"0");
+        } 
+    }
+    siteandTime = [];
+    for(var i = 0; i < sites.length; i++){
+        webname = sites[i]
+        time = (Math.round(timeOfSites.getItem(String(sites[i]))))
+        pair = String((sites[i]+": "+ time))
+        siteandTime.push(pair)
+    }
+    document.getElementById("submit").innerHTML = siteandTime.join("<br>");
+    siteandTime = [];
+    oldTime();
+});
 
 
-    function getData() {
-        //info for first website
-        time1 = document.getElementById("time").value;
-        website1 = document.getElementById("website").value;
-        level1 = document.getElementById("type").value;
-        alert(website1);
-        localStorage.setItem("time1", time);
-        localStorage.setItem("website1", website1);
-        localStorage.setItem("level1", level1);
-      
-        //info for second website
-        time2 = document.getElementById("time2").value;
-        website2 = document.getElementById("website2").value;
-        level2 = document.getElementById("type2").value;
-        localStorage.setItem("time2", time2);
-        localStorage.setItem("website2", website2);
-        localStorage.setItem("level2", level2);
-        
-        //info for third website
-        time3 = document.getElementById("time3").value;
-        website3 = document.getElementById("website3").value;
-        level3 = document.getElementById("type3").value;
-        localStorage.setItem("time3", time3);
-        localStorage.setItem("website3", website3);
-        localStorage.setItem("level3", level3);
-        
-        var websiteDummy = localStorage.getItem("website1");
-        document.getElementById("test").innerHTML = websiteDummy;
-      
-      }
+}
