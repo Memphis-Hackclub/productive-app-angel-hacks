@@ -5,8 +5,8 @@ sites = sites.split(",")
 timeOfSites = timeOfSites.split(",")
 
 
-document.getElementById("test").innerHTML = sites;
-document.getElementById("test2").innerHTML = timeOfSites;
+//document.getElementById("test").innerHTML = sites;
+//document.getElementById("test2").innerHTML = timeOfSites;
 for (var i = 0; i < timeOfSites.length; i++) {
   timeOfSites[i] = parseFloat(timeOfSites[i]);
 }
@@ -21,6 +21,7 @@ precent=[];
 
 for(var i = 0; i < timeOfSites.length; i++){
   var localPrecent = (timeOfSites[i]/allTime)*100;
+  localPrecent = parseInt(localPrecent)
   precent.push(localPrecent);
   
 }
@@ -54,4 +55,3 @@ window.onload = function() {
   chart.render();
   
 }
-
