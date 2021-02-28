@@ -1,4 +1,3 @@
-
 storage = window.localStorage;
 sites = [];
 fistrun = true;
