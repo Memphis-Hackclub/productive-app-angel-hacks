@@ -76,7 +76,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     
     for(var i = 0; i < sites.length; i++){
         webname = sites[i]
-        time = (Math.round(timeOfSites.getItem(String(sites[i]))/60))
+        time = (Math.round(timeOfSites.getItem(String(sites[i]))/120))
         timeForChart.push(time)
         pair = String((sites[i]+": "+ time))
         siteandTime.push(pair)
