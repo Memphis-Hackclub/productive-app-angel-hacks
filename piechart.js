@@ -21,6 +21,7 @@ precent=[];
 
 for(var i = 0; i < timeOfSites.length; i++){
   var localPrecent = (timeOfSites[i]/allTime)*100;
+  localPrecent = parseInt(localPrecent)
   precent.push(localPrecent);
   
 }
