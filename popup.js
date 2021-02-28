@@ -1,5 +1,3 @@
-
-
 storage = window.localStorage;
 sites = [];
 fistrun = true;
@@ -7,6 +5,7 @@ timeOfSites = window.localStorage;
 oldTimeHolder = window.localStorage;
 siteStorgaeTime = window.localStorage;
 oldTime()
+alert("yo")
 
 function oldTime(){
    if(fistrun == true && oldTimeHolder.length != 0){
@@ -30,7 +29,7 @@ function myTimer() {
     var date = new Date();
     newtime = date.getTime();
     newtime = newtime/1000;
-    realtime = Math.abs(newtime-oldtime+0.5);
+    realtime = Math.abs(newtime-oldtime);
 
     main();
     return newtime  
@@ -71,16 +70,23 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         } 
     
     siteandTime = [];
-
+    
+    timeForChart = [];
+    
     for(var i = 0; i < sites.length; i++){
         webname = sites[i]
-        time = (Math.round(timeOfSites.getItem(String(sites[i]))/60))
+        time = (Math.round(timeOfSites.getItem(String(sites[i]))))
+        timeForChart.push(time)
         pair = String((sites[i]+": "+ time))
         siteandTime.push(pair)
     }
 
     document.getElementById("submit").innerHTML = siteandTime.join("<br>");
-   
+    
+    
+    localStorage.setItem("timeofSite", timeForChart);
+    localStorage.setItem("sites", sites);
+
     siteandTime = [];
 
     oldTime();
