@@ -1,6 +1,6 @@
 
 
-//https://rabbitholehtml.philippounds.repl.co
+
 storage = window.localStorage;
 sites = [];
 specialSites = ["www.youtube.com", "www.tiktok.com", "twitter.com"]
@@ -134,8 +134,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     }
     for(var i = 0; i < WebsiteArray.length; i++){
         amount = parseInt(timeOfSites.getItem(String(WebsiteArray[i])))/100
-        time = parseInt(timeArray[i])
-        alert(howlongyogot)
+        howlongyogot = parseInt(timeArray[i])
+    
         if(amount >= howlongyogot && include(WebsiteArray, Adreess)){
             alert("(|__/) || THE RABBIT EXTERMINATOR"+"\n"+"(•ㅅ•) ||EVERYONE GET OUT!")
         }
