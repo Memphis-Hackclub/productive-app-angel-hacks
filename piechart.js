@@ -5,8 +5,8 @@ sites = sites.split(",")
 timeOfSites = timeOfSites.split(",")
 
 
-document.getElementById("test").innerHTML = sites;
-document.getElementById("test2").innerHTML = timeOfSites;
+//document.getElementById("test").innerHTML = sites;
+//document.getElementById("test2").innerHTML = timeOfSites;
 for (var i = 0; i < timeOfSites.length; i++) {
   timeOfSites[i] = parseFloat(timeOfSites[i]);
 }
