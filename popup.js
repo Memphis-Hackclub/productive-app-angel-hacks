@@ -30,7 +30,8 @@ function myTimer() {
     var date = new Date();
     newtime = date.getTime();
     newtime = newtime/1000;
-    realtime = newtime-oldtime;
+    realtime = Math.abs(newtime-oldtime+0.5);
+
     main();
     return newtime  
     }
@@ -45,6 +46,7 @@ function url_domain(data) {
     return a.hostname;
   }
 function main(){
+    
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let Adreess = String(url_domain(tabs[0].url));
     storage.setItem(String(storage.length),Adreess);
@@ -60,23 +62,27 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 }
     
         if(timeOfSites.getItem(Adreess) != undefined && timeOfSites.getItem(Adreess) != "NaN"){
-            
+           
             noldtimer = parseInt(timeOfSites.getItem(String(Adreess)))
-            timeOfSites.setItem(String(Adreess),String(noldtimer+1))   
+            timeOfSites.setItem(String(Adreess),String(noldtimer+realtime))   
         }
         else{
             timeOfSites.setItem(String(Adreess),"0");
         } 
     
     siteandTime = [];
+
     for(var i = 0; i < sites.length; i++){
         webname = sites[i]
-        time = (Math.round(timeOfSites.getItem(String(sites[i]))))
+        time = (Math.round(timeOfSites.getItem(String(sites[i]))/60))
         pair = String((sites[i]+": "+ time))
         siteandTime.push(pair)
     }
+
     document.getElementById("submit").innerHTML = siteandTime.join("<br>");
+   
     siteandTime = [];
+
     oldTime();
 });
 
