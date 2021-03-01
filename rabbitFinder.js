@@ -136,7 +136,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         amount = parseInt(timeOfSites.getItem(String(WebsiteArray[i])))/100
         howlongyogot = parseInt(timeArray[i])
     
-        if(amount >= howlongyogot && include(WebsiteArray, Adreess)){
+        if(amount >= howlongyogot && WebsiteArray[i] == Adreess){
             alert("(|__/) || THE RABBIT EXTERMINATOR"+"\n"+"(•ㅅ•) ||EVERYONE GET OUT!")
         }
     }
