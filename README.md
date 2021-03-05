@@ -14,8 +14,3 @@ Please only use pull requests to add your branches so we do not mess up anyone's
 # Other Open Source Code Used
 This project uses canvas.js [canvas.js](https://canvasjs.com/)
 
-# Personal Notes My Changes to Popup.js
-> timeForChart = []; Before the for loop
->  timeForChart.push(time) inside for loop
->  localStorage.setItem("timeofSite", timeForChart);
->  localStorage.setItem("sites", sites);
